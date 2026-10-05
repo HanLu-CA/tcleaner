@@ -1,0 +1,18 @@
+{
+  "name": "tcleaner",
+  "version": "0.1.0",
+  "description": "Discord bot that replies with tracker-free versions of posted links",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=20.12"
+  },
+  "scripts": {
+    "start": "node --env-file-if-exists=.env src/bot.js",
+    "test": "node --test",
+    "update-rules": "curl -fsSL https://rules2.clearurls.xyz/data.minify.json -o data/clearurls.json"
+  },
+  "dependencies": {
+    "discord.js": "^14.27.0"
+  }
+}
