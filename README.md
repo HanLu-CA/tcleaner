@@ -16,14 +16,8 @@ Needs Node 20.12 or newer.
 
 ```sh
 npm install
-cp .env.example .env   # then put the bot token in it
+echo "DISCORD_TOKEN=your-bot-token" > .env
 npm start
-```
-
-## Test
-
-```sh
-npm test
 ```
 
 ## Deploy with systemd
