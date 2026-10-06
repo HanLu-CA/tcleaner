@@ -1,4 +1,5 @@
 const CODE = /```[\s\S]*?```|`[^`\n]*`/g;
+const CODE_SPLIT = new RegExp(`(${CODE.source})`);
 const URL = /https?:\/\/[^\s<>]+/gi;
 const TRAILING_PUNCTUATION = /[.,!?:;'"*_~|]+$/;
 
@@ -25,4 +26,18 @@ export function extractUrls(content) {
   const text = content.replace(CODE, ' ');
   const urls = (text.match(URL) ?? []).map(trimTrailing);
   return [...new Set(urls)];
+}
+
+// Rewrites every http(s) URL outside code with replace(url); the rest of the message is untouched.
+export function replaceUrls(content, replace) {
+  return content
+    .split(CODE_SPLIT)
+    .map((part, index) => {
+      if (index % 2) return part;
+      return part.replace(URL, (match) => {
+        const url = trimTrailing(match);
+        return replace(url) + match.slice(url.length);
+      });
+    })
+    .join('');
 }

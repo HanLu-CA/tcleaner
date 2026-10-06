@@ -1,6 +1,6 @@
 # tcleaner
 
-Discord bot that spots tracking parameters in posted links, replies with the clean link, and hides the preview of the original.
+Discord bot that spots tracking parameters in posted links, deletes the message, and reposts it with clean links and a mention of the original author.
 
 ## Discord setup
 
@@ -8,7 +8,7 @@ Discord bot that spots tracking parameters in posted links, replies with the cle
 2. Under **Bot**, enable the **Message Content Intent**.
 3. Invite it with the `bot` scope and these permissions: View Channels, Send Messages, Read Message History, Embed Links, Manage Messages.
 
-Manage Messages is only used to hide the original link's preview; without it the bot still replies.
+Manage Messages is needed to delete the original. Without it, or when a message cannot be reposted (stickers, polls, attachments too large, or no room for the mention), the bot replies with the clean links instead.
 
 ## Run
 
